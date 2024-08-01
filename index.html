@@ -18,14 +18,39 @@
 
 <style>
 body{
-
-
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000000;
+    font-weight: 500;
+    background: #ababab;
+    flex-grow:20;
 
 }
 .carol001 img{
 height:500px;
 
 }
+.blank001{
+margin: 5rem;
+/*clear:both;*/
+}
+
+footer{
+    clear: both;
+}
+
+/*.cont12{*/
+/*    display: inline-block;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*    align-content: center;*/
+/*    justify-content: center;*/
+/*    margin: 50rem;*/
+/*    border:red solid 5px;*/
+/*}*/
+
 
 </style>
 </head>
@@ -82,13 +107,116 @@ height:500px;
 </div>
 
 
+<!--&lt;!&ndash;<div class="cont12">&ndash;&gt;-->
+<!--<h1>-->
+<!--Hello world-->
+<!--</h1>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
 
 
-<div class="container11">
+<div class="blank001"></div>
+
+    <select name="effects" id="effectTypes">
+        <option value="blind">Blind</option>
+        <option value="bounce">Bounce</option>
+        <option value="clip">Clip</option>
+        <option value="drop">Drop</option>
+        <option value="explode">Explode</option>
+        <option value="fade">Fade</option>
+        <option value="fold">Fold</option>
+        <option value="highlight">Highlight</option>
+        <option value="puff">Puff</option>
+        <option value="pulsate">Pulsate</option>
+        <option value="scale">Scale</option>
+        <option value="shake">Shake</option>
+        <option value="size">Size</option>
+        <option value="slide">Slide</option>
+    </select>
+
+    <button id="button" class="ui-state-default ui-corner-all">Show Medals</button>
+    <div class="blank001">
+
+    </div>
 
 
+<div class="container  mt-5 mb-5" >
+    <div class="row justify-content-center align-items-center  ">
+<div class="card   col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 m-2 " style="width: 18rem;">
+<img src="img/webp/USA.webp" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="card-title">USA</h1>
+<div class="d-grid gap-2 d-inline-flex justify-content-center col-12">
+<button class="btn btn-warning" style="border-radius: 50%" type="button">12</button>
+<button class="btn btn-secondary"
+   style="border-radius: 50%"  type="button">5</button>
+<button class="btn" style="background-color: #813900; border-radius: 50%;color:rgba(255,255,255);" >12</button>
+</div>
+</div>
+</div>
+
+<div class="card col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 m-2 " style="width: 18rem;">
+<img src="img/webp/CHN.webp" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="card-title">CHINA</h1>
+<div class="d-grid gap-2 d-inline-flex justify-content-center col-12">
+<button class="btn btn-warning" style="border-radius: 50%" type="button">12</button>
+<button class="btn btn-secondary"
+        style="border-radius: 50%"     type="button">5</button>
+<button class="btn" style="background-color: #813900; border-radius: 50%;color:rgba(255,255,255);" >12</button>
+</div>
 
 </div>
+</div>
+
+<div class="card col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 m-2 " style="width: 18rem;">
+<img src="img/webp/JPN.webp" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="card-title">JAPAN</h1>
+<div class="d-grid gap-2 d-inline-flex justify-content-center col-12">
+<button class="btn btn-warning" style="border-radius: 50%" type="button">12</button>
+<button class="btn btn-secondary"
+        style="border-radius: 50%"     type="button">5</button>
+<button class="btn" style="background-color: #813900; border-radius: 50%;color:rgba(255,255,255);" >12</button>
+</div>
+</div>
+</div>
+
+<div class="card col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 m-2 " style="width: 18rem;">
+<img src="img/webp/GER.webp" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="card-title">GERMAN</h1>
+<div class="d-grid gap-2 d-inline-flex justify-content-center col-12">
+<button class="btn btn-warning" style="border-radius: 50%" type="button">12</button>
+<button class="btn btn-secondary"
+        style="border-radius: 50%"     type="button">5</button>
+<button class="btn" style="background-color: #813900; border-radius: 50%;color:rgba(255,255,255);" >12</button>
+</div>
+</div>
+</div>
+
+
+
+<div class="card col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 m-2 " style="width: 18rem;">
+    <img src="img/webp/FRA.webp" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="card-title">FRANCE</h1>
+<div class="d-grid gap-2 d-inline-flex justify-content-center col-12">
+<button class="btn btn-warning" style="border-radius: 50%" type="button">12</button>
+<button class="btn btn-secondary"
+        style="border-radius: 50%"     type="button">5</button>
+<button class="btn" style="background-color: #813900; border-radius: 50%;color:rgba(255,255,255);" >12</button>
+</div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -131,7 +259,30 @@ height:500px;
 
 <script>
 
+    $( function() {
+        // run the currently selected effect
+        function runEffect() {
+            // get effect type from
+            var selectedEffect = $( "#effectTypes" ).val();
 
+            // Most effect types need no options passed by default
+            var options = {};
+            // some effects have required parameters
+            if ( selectedEffect === "scale" ) {
+                options = { percent: 50 };
+            } else if ( selectedEffect === "size" ) {
+                options = { to: { width: 200, height: 60 } };
+            }
+
+            // Run the effect
+            $( ".effect" ).toggle( selectedEffect, options, 500 );
+        };
+
+        // Set effect from select menu value
+        $( "#button" ).on( "click", function() {
+            runEffect();
+        });
+    } );
 
 </script>
 </body>
