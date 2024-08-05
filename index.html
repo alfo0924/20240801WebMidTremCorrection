@@ -148,13 +148,15 @@
 </div>
 
 
-
+<button id="sortGold">Show golden medals by ranking</button>
+<button id="sortTotal">Show totals by ranking</button>
+<div id="results"></div>
 
 
 <p class="d-inline-flex gap-1">
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show medals</a>
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Show golden medals by ranking </button>
+    <button id="showGoldMedalsBtn" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Show golden medals by ranking </button>
 
 
 
@@ -1200,34 +1202,63 @@
 
 <script>
 
-    // $( function() {
-    //     // run the currently selected effect
-    //     function runEffect() {
-    //         // get effect type from
-    //         var selectedEffect = $( "#effectTypes" ).val();
-    //
-    //         // Most effect types need no options passed by default
-    //         var options = {};
-    //         // some effects have required parameters
-    //         if ( selectedEffect === "scale" ) {
-    //             options = { percent: 50 };
-    //         } else if ( selectedEffect === "size" ) {
-    //             options = { to: { width: 200, height: 60 } };
-    //         }
-    //
-    //         // Run the effect
-    //         $( ".effect" ).toggle( selectedEffect, options, 500 );
-    //     };
-    //
-    //     // Set effect from select menu value
-    //     $( "#button" ).on( "click", function() {
-    //         runEffect();
-    //     });
-    // } );
-    var myCarousel = document.getElementById('carouselExampleCaptions');
-    var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 1500 // Adjust the interval (in milliseconds) as needed
-    });
+    // Sample data
+    let countries = [
+        { name: "USA", gold: 9, silver: 17, bronze: 15 },
+        { name: "CHINA", gold: 13, silver: 7, bronze: 7 },
+        { name: "JAPAN", gold: 8, silver: 3, bronze: 6 },
+        { name: "GERMAN", gold: 2, silver: 3, bronze: 2 },
+        { name: "FRANCE", gold: 8, silver: 11, bronze: 11 },
+        { name: "AUSTRALIA", gold: 8, silver: 6, bronze: 5 },
+        { name: "AZERBAIJAN", gold: 2, silver: 0, bronze: 0 },
+        { name: "CANADA", gold: 3, silver: 2, bronze: 4 },
+        { name: "GRATE BRITAIN", gold: 9, silver: 8, bronze: 8 },
+        { name: "GEORGIA", gold: 1, silver: 2, bronze: 0 },
+        { name: "HONG KONG", gold: 2, silver: 0, bronze: 2 },
+        { name: "HUNGARY", gold: 1, silver: 2, bronze: 1 },
+        { name: "IRELAND", gold: 2, silver: 0, bronze: 2 },
+        { name: "ITALY", gold: 5, silver: 8, bronze: 4 },
+        { name: "KOREAN", gold: 7, silver: 4, bronze: 4 },
+        { name: "NEDERLAND", gold: 4, silver: 2, bronze: 2 },
+        { name: "NEW ZEALAND", gold: 2, silver: 3, bronze: 1 },
+        { name: "ROMANIA", gold: 2, silver: 3, bronze: 1 },
+        { name: "REPUBLIC OF SOUTH AFRICA", gold: 7, silver: 4, bronze: 4 },
+        { name: "SWEDEN", gold: 1, silver: 2, bronze: 2 }
+    ];
+
+    function sortByGoldMedals() {
+        countries.sort((a, b) => b.gold - a.gold);
+        displayResults();
+    }
+
+    function sortByTotalMedals() {
+        countries.sort((a, b) => {
+            const totalA = a.gold + a.silver + a.bronze;
+            const totalB = b.gold + b.silver + b.bronze;
+            return totalB - totalA;
+        });
+        displayResults();
+    }
+
+    function displayResults() {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+
+        countries.forEach(country => {
+            const total = country.gold + country.silver + country.bronze;
+            resultsContainer.innerHTML += `
+            <div>
+                ${country.name}: Gold ${country.gold}, Silver ${country.silver}, Bronze ${country.bronze}, Total ${total}
+            </div>
+        `;
+        });
+    }
+
+    document.getElementById('sortGold').addEventListener('click', sortByGoldMedals);
+    document.getElementById('sortTotal').addEventListener('click', sortByTotalMedals);
+
+    // Initial display
+    displayResults();
 </script>
 </body>
 </html>
