@@ -67,8 +67,6 @@
 <body>
 
 
-
-
 <div id="carouselExampleCaptions" class="carousel slide"  data-bs-ride="carousel">
     <div class=" carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -1200,30 +1198,36 @@
 
 <script>
 
-    // $( function() {
-    //     // run the currently selected effect
-    //     function runEffect() {
-    //         // get effect type from
-    //         var selectedEffect = $( "#effectTypes" ).val();
-    //
-    //         // Most effect types need no options passed by default
-    //         var options = {};
-    //         // some effects have required parameters
-    //         if ( selectedEffect === "scale" ) {
-    //             options = { percent: 50 };
-    //         } else if ( selectedEffect === "size" ) {
-    //             options = { to: { width: 200, height: 60 } };
-    //         }
-    //
-    //         // Run the effect
-    //         $( ".effect" ).toggle( selectedEffect, options, 500 );
-    //     };
-    //
-    //     // Set effect from select menu value
-    //     $( "#button" ).on( "click", function() {
-    //         runEffect();
-    //     });
-    // } );
+    document.addEventListener('DOMContentLoaded', function() {
+        const goldMedalButton = document.querySelector('[data-bs-target="#multiCollapseExample2"]');
+        const totalMedalButton = document.querySelector('[data-bs-target="#multiCollapseExample3"]');
+
+        goldMedalButton.addEventListener('click', () => sortCards('gold'));
+        totalMedalButton.addEventListener('click', () => sortCards('total'));
+
+        function sortCards(sortType) {
+            const cardContainer = document.querySelector('#multiCollapseExample' + (sortType === 'gold' ? '2' : '3') + ' .cado1');
+            const cards = Array.from(cardContainer.children);
+
+            cards.sort((a, b) => {
+                const countA = getMedalCount(a, sortType);
+                const countB = getMedalCount(b, sortType);
+                return countB - countA; // Sort in descending order
+            });
+
+            // Re-append sorted cards
+            cards.forEach(card => cardContainer.appendChild(card));
+        }
+
+        function getMedalCount(card, type) {
+            const buttons = card.querySelectorAll('.btn');
+            if (type === 'gold') {
+                return parseInt(buttons[0].textContent);
+            } else { // total
+                return Array.from(buttons).reduce((sum, btn) => sum + parseInt(btn.textContent), 0);
+            }
+        }
+    });
     var myCarousel = document.getElementById('carouselExampleCaptions');
     var carousel = new bootstrap.Carousel(myCarousel, {
         interval: 1500 // Adjust the interval (in milliseconds) as needed
